@@ -27,7 +27,7 @@ public class CommentService implements ICommentService {
 
     @Override
     public Comment createComment(Comment comment) {
-        return commentRepository.save(comment); // Devuelve el objeto guardado
+        return commentRepository.save(comment);
     }
 
     @Override

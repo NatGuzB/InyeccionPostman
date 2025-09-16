@@ -1,12 +1,14 @@
 package com.Blog.Blog.Service;
+
 import com.Blog.Blog.Model.Posteo;
 import java.util.List;
 import java.util.Optional;
 
-public interface IservicePosteo {
+public interface IPosteoService {
     List<Posteo> getAllPosteos();
     Optional<Posteo> getPosteoById(Long id);
-    void createPosteo(Posteo posteo);
+    Posteo createPosteo(Posteo posteo);
+    Posteo updatePosteo(Posteo posteo); // Cambiado de void a Posteo
     void deletePosteo(Long id);
-    void updatePosteo(Posteo posteo);
+    List<Posteo> getPosteosByAuthorId(Long authorId);
 }

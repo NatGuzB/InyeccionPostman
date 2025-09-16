@@ -1,4 +1,5 @@
 package com.Blog.Blog.Service;
+
 import com.Blog.Blog.Model.Posteo;
 import com.Blog.Blog.Repository.IposteoRepository;
 import org.springframework.stereotype.Service;
@@ -7,10 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PosteoService implements IservicePosteo {
+public class PosteoService implements IPosteoService {
     private final IposteoRepository posteoRepository;
 
-    // Inyección por constructor a GETTERS Y SETTERS
     public PosteoService(IposteoRepository posteoRepository) {
         this.posteoRepository = posteoRepository;
     }
@@ -26,17 +26,22 @@ public class PosteoService implements IservicePosteo {
     }
 
     @Override
-    public void createPosteo(Posteo posteo) {
-        posteoRepository.save(posteo);
+    public Posteo createPosteo(Posteo posteo) {
+        return posteoRepository.save(posteo);
     }
 
     @Override
-    public void updatePosteo(Posteo posteo) {
-        posteoRepository.save(posteo);
+    public Posteo updatePosteo(Posteo posteo) {
+        return posteoRepository.save(posteo);
     }
 
     @Override
     public void deletePosteo(Long id) {
         posteoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Posteo> getPosteosByAuthorId(Long authorId) {
+        return posteoRepository.findByAuthorId(authorId);
     }
 }

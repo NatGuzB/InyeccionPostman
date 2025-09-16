@@ -6,8 +6,8 @@ import java.util.Optional;
 
 public interface ICommentService {
     List<Comment> getAllComments();
-    Optional<Comment> getCommentById(Long id); // Devuelve Optional<Comment>
-    Comment createComment(Comment comment); // Devuelve Comment
+    Optional<Comment> getCommentById(Long id);
+    Comment createComment(Comment comment);
     void updateComment(Comment comment);
     void deleteComment(Long id);
 }

@@ -1,5 +1,7 @@
 package com.Blog.Blog.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,6 +19,7 @@ public class Author {
     private String email;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Posteo> posteos;
 
     // Getters y Setters

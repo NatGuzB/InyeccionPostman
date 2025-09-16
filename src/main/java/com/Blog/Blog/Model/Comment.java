@@ -1,5 +1,6 @@
 package com.Blog.Blog.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -17,6 +18,7 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "posteo_id", nullable = false)
+    @JsonManagedReference
     private Posteo posteo;
 
     // Getters y Setters

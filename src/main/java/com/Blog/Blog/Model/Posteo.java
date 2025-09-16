@@ -1,4 +1,6 @@
 package com.Blog.Blog.Model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -13,9 +15,11 @@ public class Posteo {
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
+    @JsonManagedReference
     private Author author;
 
     @OneToMany(mappedBy = "posteo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Comment> comments;
 
     // Getters y Setters
