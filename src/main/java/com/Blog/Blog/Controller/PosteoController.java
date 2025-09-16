@@ -1,8 +1,11 @@
 package com.Blog.Blog.Controller;
 import com.Blog.Blog.Model.Posteo;
 import com.Blog.Blog.Service.IservicePosteo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/posteos")
@@ -10,6 +13,7 @@ public class PosteoController {
     private final IservicePosteo posteoService;
 
     // Inyección por constructor A URL
+    @Autowired
     public PosteoController(IservicePosteo posteoService) {
         this.posteoService = posteoService;
     }
@@ -20,8 +24,13 @@ public class PosteoController {
     }
 
     @GetMapping("/{id}")
-    public Posteo getPosteoById(@PathVariable Long id) {
-        return posteoService.getPosteoById(id);
+    public ResponseEntity<Posteo> getPosteoById(@PathVariable Long id) {
+        Optional<Posteo> posteoOptional = posteoService.getPosteoById(id);
+        if (posteoOptional.isPresent()) {
+            return ResponseEntity.ok(posteoOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/crear")

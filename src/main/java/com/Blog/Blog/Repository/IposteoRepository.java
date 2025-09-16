@@ -1,11 +1,9 @@
 package com.Blog.Blog.Repository;
 import com.Blog.Blog.Model.Posteo;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IposteoRepository {
-    List<Posteo> findAll();
-    Posteo findById(Long id);
-    void save(Posteo posteo);
-    void deleteById(Long id);
-    void update(Posteo posteo);
+
+public interface IposteoRepository extends JpaRepository<Posteo, Long> {
+
 }
